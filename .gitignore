@@ -1,0 +1,10 @@
+# Daten werden von den Skripten erzeugt und enthalten Quelladressen.
+daten/
+checkpoints/
+*.tsv
+*.jsonl
+*.npy
+.env
+__pycache__/
+*.pyc
+.idea/

@@ -1,0 +1,20 @@
+services:
+  ba-postgres:
+    image: pgvector/pgvector:pg16
+    container_name: ba-postgres
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ba_pgdata:/var/lib/postgresql/data
+    mem_limit: 384m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ba_thesis -d bachelorarbeit"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  ba_pgdata:
+    name: ba_pgdata
